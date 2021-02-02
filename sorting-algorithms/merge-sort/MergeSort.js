@@ -7,7 +7,7 @@ O(n log n)
 
 */
 
-// Merge function from earlier
+// Merge two arrays
 function merge(arr1, arr2) {
   let results = []
   let i = 0
