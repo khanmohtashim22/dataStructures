@@ -1,6 +1,6 @@
 /*
 
-Max Binary Heap
+Min Binary Heap
 
 Time Complexity
 Insertion = O(log N)
@@ -22,10 +22,10 @@ class MaxBinaryHeap {
   bubbleUp() {
     let idx = this.values.length - 1
     const element = this.values[idx]
-    while(idx > 0) {
+    while (idx > 0) {
       let parentIdx = Math.floor(((idx - 1) / 2))
       let parent = this.values[parentIdx]
-      if (element <= parent) break
+      if (element >= parent) break
       this.values[parentIdx] = element
       this.values[idx] = parent
       idx = parentIdx
@@ -33,13 +33,13 @@ class MaxBinaryHeap {
   }
 
   extractMax() {
-    const max = this.values[0]
+    const min = this.values[0]
     const end = this.values.pop()
-    if (this.values.length > 0 ) {
+    if (this.values.length > 0) {
       this.values[0] = end
       this.sinkDown()
     }
-    return max
+    return min
   }
 
   sinkDown() {
@@ -47,7 +47,7 @@ class MaxBinaryHeap {
     const length = this.values.length
     const element = this.values[0]
 
-    while(true) {
+    while (true) {
       let leftChildIdx = ((2 * idx) + 1)
       let rightChildIdx = ((2 * idx) + 2)
       let leftChild, rightChild
@@ -55,7 +55,7 @@ class MaxBinaryHeap {
 
       if (leftChildIdx < length) {
         leftChild = this.values[leftChildIdx]
-        if (leftChild > element) {
+        if (leftChild < element) {
           swap = leftChildIdx
         }
       }
@@ -63,8 +63,8 @@ class MaxBinaryHeap {
       if (rightChildIdx < length) {
         rightChild = this.values[rightChildIdx]
         if (
-          (swap === null && rightChild > element) ||
-          (swap !== null && rightChild > leftChild)
+          (swap === null && rightChild < element) ||
+          (swap !== null && rightChild < leftChild)
         ) {
           swap = rightChildIdx
         }
