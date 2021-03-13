@@ -143,7 +143,6 @@ class BinarySearchTree {
     
     will give you [3,8,6,20,15,10]
 
-    we get all the nodes in the tree in order
   */
   DFSPostOrder() {
     var data = []
@@ -165,6 +164,8 @@ class BinarySearchTree {
         3   8                            20
     
     will give you [3,6,8,10,15,20]
+
+    we get all the nodes in the tree in order
   */
   DFSInOrder() {
     var data = []
